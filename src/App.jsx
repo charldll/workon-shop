@@ -1,35 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {useState} from "react";
+
+import './App.css';
+import Images from './components/Images.jsx';
+import Button from './components/Button.jsx';
+import Description from './components/Description.jsx';
+import descriptions from './data/descriptions.js';
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const [description, setDescription] = useState("");
+
+  const changeDescription = (descriptionKey) => {
+    setDescription(descriptionKey);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
+    <div>
+      <Images />
       <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="buttons">
+        <Button onClick={() => {
+          changeDescription("first");
+          }}
+          isActive = {description === "first"}
+					>
+            First
+          </Button>
+        <Button onClick={() =>{
+          changeDescription("second");
+        }}
+				isActive = {description === "second"}
+        >
+          Second
+          </Button>
+        <Button onClick = {() => {
+          changeDescription("third");
+        }}
+				isActive = {description === "third"}
+        >
+          Third
+          </Button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      <div className="card">
+				<h3>Descriptions</h3>
+				{
+					description ?
+					(<Description>{descriptions[description]}</Description>)
+					: <p>Please select description</p>
+				}
+				{/* i fucking hate the word descriptioooon */}
+				{/* {description && (<Description>{descriptions[description]}</Description>)}
+				{!description && <p>Please select description</p>} */}
+				{/* ^zapis alternatywny żeby uniknąć głeobkich zagnieżdżeń etc. */}
+      </div>
+    </div>
+  );
+};
 
-export default App
+// TODO dodać czwarty sprawny przycisk
+
+export default App;
