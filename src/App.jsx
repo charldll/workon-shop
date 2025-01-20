@@ -67,7 +67,7 @@ function App() {
       </div>
       <div className="card">
 				<h3>Descriptions</h3>
-				{description ?
+				{/* {description ?
 					(<div>
               <Description>
                 {descriptions[description]}
@@ -77,12 +77,16 @@ function App() {
               </button>
               {imageToggle && <img src={imgs[img]}/>}
             </div>
-        ) : (<p>Please select description</p>)}
-				{/* i fcking hate the word descriptioooon */}
-				{/* {description && (<Description>{descriptions[description]}</Description>)}
-				{!description && <p>Please select description</p>} */}
-				{/* ^zapis alternatywny żeby uniknąć głeobkich zagnieżdżeń etc. */}
-        
+        ) : (<p>Please select description</p>)} */}
+        {description && (
+          <Description
+            image = {descriptions[description].image}
+            attributes = {descriptions[description].attributes}
+            >
+              {descriptions[description].text}
+            </Description>
+        )}
+
       </div>
     </div>
   );
