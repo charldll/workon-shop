@@ -11,7 +11,7 @@ import imgs from './data/imgs.js';
 function App() {
   
   const [description, setDescription] = useState("");
-  const [img, setShowImage] = useState("");
+  const [img, setShowImage] = useState();
 
   const changeDescription = (descriptionKey) => {
     setDescription(descriptionKey);
@@ -21,6 +21,12 @@ function App() {
     setShowImage(imageNo);
   };
 
+  const [imageToggle, setImageToggle] = useState(false);
+
+  function buttonToggle () {
+    setImageToggle((previous) => !previous);
+  }
+
   return (
     <div>
       <Images />
@@ -28,7 +34,7 @@ function App() {
       <div className="buttons">
         <Button onClick={() => {
           changeDescription("first"),
-          changeImage("one")
+          changeImage(0)
         }}
           isActive = {description === "first"}
         >
@@ -36,7 +42,7 @@ function App() {
           </Button>
         <Button onClick={() => {
           changeDescription("second"),
-          changeImage("two")
+          changeImage(1)
           }}
           isActive = {description === "second"}
         >
@@ -44,7 +50,7 @@ function App() {
           </Button>
         <Button onClick = {() => {
           changeDescription("third"),
-          changeImage("three")
+          changeImage(2)
         }}
 				isActive = {description === "third"}
         >
@@ -52,7 +58,7 @@ function App() {
           </Button>
         <Button onClick = {() => {
           changeDescription("fourth"),
-          changeImage('four')
+          changeImage(3)
         }}
         isActive = {description === "fourth"}
         >
@@ -66,7 +72,10 @@ function App() {
               <Description>
                 {descriptions[description]}
               </Description>
-              <img src = {imgs[img]}/>
+              <button onClick = {buttonToggle}>
+                {imageToggle ? "Hide picture" : "Show picture"}
+              </button>
+              {imageToggle && <img src={imgs[img]}/>}
             </div>
         ) : (<p>Please select description</p>)}
 				{/* i fcking hate the word descriptioooon */}
