@@ -1,5 +1,5 @@
 import { Flex, Text, Icon  } from '@chakra-ui/react'
-import { ShoppingBasket } from 'lucide-react'
+import { Flower } from 'lucide-react'
 
 const Logo = () => {
   return (
@@ -8,14 +8,14 @@ const Logo = () => {
 		alignItems={"center"} 
 		gap={2}
     padding={1}
-    shadow="xl"
+    shadow={"lg"}
     rounded={"xl"}>
-      <Icon w={10} h={10} as={ShoppingBasket}/>
+      <Icon w={10} h={10} as={Flower} color={"white"}/>
 			<Text fontSize={"2xl"}
 			fontWeight={"bold"}
 			color="white"
 			>
-			Fake Store
+			花火
 			</Text>
 		</Flex>
     )

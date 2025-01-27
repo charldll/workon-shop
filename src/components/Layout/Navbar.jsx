@@ -12,8 +12,9 @@ const Navbar = () => {
 		justifyContent={"space-between"}
 		height={"70px"}
 		position={"fixed"}
-		backgroundColor={"blue.400"}
+		backgroundColor={"#68ae85"}
 		shadow={"md"}
+		zIndex={"999"}
 		>
 			<Link to="/">
 				<Logo />
