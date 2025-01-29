@@ -1,4 +1,4 @@
-import { useParams } from 'react-router';
+import { useParams, useNavigate } from 'react-router';
 import useSWR from 'swr';
 import { 
 	Flex, 
@@ -18,7 +18,9 @@ const Category = () => {
 		error, 
 		isLoading 
 	} = useSWR(`/products/category/${category}`);
-  
+
+	const navigate = useNavigate();
+
 	return (
 		<Center>
 			{isLoading && <Spinner size="xl"/>}
@@ -31,12 +33,15 @@ const Category = () => {
 			<Flex marginTop={2} marginBottom={2}>
 				<SimpleGrid columns={3} gap={5}>
 				{categoryData?.map((product) => (
-				    <Card.Root 
+						<Card.Root 
 							key={product.id}
 							maxW="sm" 
 							overflow="hidden" 
 							background={"white"}
 							cursor={"pointer"}
+							onClick={()=> {
+								navigate(`/products/${product.id}`)
+							}}
 							>
 							<Image
 								src={product.image}
