@@ -12,6 +12,7 @@ import Categories from './routes/Categories.jsx';
 import Account from './routes/Account.jsx';
 import Category from './routes/Category.jsx';
 import Product from './routes/Product.jsx';
+import SignUp from './routes/SignUp.jsx';
 
 axios.defaults.baseURL = 'https://fakestoreapi.com';
 
@@ -27,6 +28,7 @@ createRoot(document.getElementById('root')).render(
               <Route path="/categories/:category" element={<Category />} />
               <Route path="/products/:product" element={<Product />} />
               <Route path="/account" element ={<Account />} />
+              <Route path="/account/signup" element={<SignUp />} />
             </Route>
           </Routes>
         </BrowserRouter>
@@ -34,6 +36,3 @@ createRoot(document.getElementById('root')).render(
     </Provider>
   </StrictMode>
 );
-
-
-//TODO podstrona dla pojedynczego produktu -> nowy route, każdy produkt ma przenosić do siebie 

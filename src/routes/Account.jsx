@@ -5,12 +5,14 @@ import {
   Input,
   Center,
   IconButton,
-  Button
+  Button,
+  Text
   } from '@chakra-ui/react';
 
 import { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router';
 
 import validator from 'validator';
 import axios from 'axios';
@@ -24,6 +26,8 @@ const Account = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  
+  const navigate = useNavigate();
 
   const onSubmit = async(data) => {
     try {
@@ -54,9 +58,11 @@ const Account = () => {
     marginTop={20}
     padding={5}
     rounded={"md"}
-    shadow={"xl"}>
+    shadow={"sm"}
+    minW={"400px"}
+    >
 
-      <Heading>Sign Up</Heading>
+      <Heading>Sign In</Heading>
 
       {/* <Field.Root invalid={errors?.email ? true : false}> */}
       <Field.Root invalid={!!errors?.email}>
@@ -97,6 +103,14 @@ const Account = () => {
           Sign in
         </Button>
 
+        <Text
+        fontSize={"small"}
+        cursor={"pointer"}
+        onClick={() => (
+          navigate("/account/signup")
+        )}>
+          Don't have an account yet? <u>Sign up!</u>
+          </Text>
     </Flex>
     </form>
     </Center>
